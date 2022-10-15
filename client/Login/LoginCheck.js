@@ -1,7 +1,8 @@
 //create a function to check username and password
 import {validateUsername, validatePassword} from "./Validation.js"
 import {Login} from "../API/Login.js"
-const LoginCheck = (username,password, {setUserID,setPageID}) =>{
+import AsyncStorage from "@react-native-async-storage/async-storage";
+const LoginCheck = (username,password, {setUser,setPageID}) =>{
 
     console.log(username);
     console.log(password)
@@ -19,8 +20,7 @@ const LoginCheck = (username,password, {setUserID,setPageID}) =>{
     else {
         //check database for username and password
         var user = Login(username,password)
-        Logged_tf=true
-        if(Logged_tf){
+        if(user!=null){
             try{
                 AsyncStorage.setItem("userName",username)
                 AsyncStorage.setItem("password",password)
@@ -29,7 +29,7 @@ const LoginCheck = (username,password, {setUserID,setPageID}) =>{
                 alert(error)
             }
             alert("Login Successful")
-            setUserID(userID)
+            setUser(user)
             setPageID("home")
         }
         else{

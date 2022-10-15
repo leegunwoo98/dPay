@@ -1,13 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import styles from "./HomeStyleSheet.js";
-import {getUser} from '../API/User.js'
 import Svg, { Path, Use, Image} from "react-native-svg";
 import Transactions from '../Transactions/Transactions.js'
 import {getGeoLocation} from '../Location.js'
 
-export default function Home({ userID, username,password,setUserID, setPageID }) {
-    const [user,setUser]=React.useState(getUser(userID,username,password));
+export default function Home({ user, setUserID, setPageID }) {
+    
     const location = getGeoLocation();
     if(user!=null){
         return (
