@@ -1,14 +1,24 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import styles from "./StyleSheet";
-import {LoginCheck} from "./LoginCheck.js";
-const Login = (setUserID) => {
+import { LoginCheck } from "./LoginCheck.js";
+const Login = ({
+  setUserID,
+  setPageID,
+  setUserNameGlobal,
+  setPasswordGlobal,
+}) => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   //create reference
   const usernameRef = React.useRef();
   const passwordRef = React.useRef();
-    //create a function to check username and password
+  //create a function to check username and password
+  function RegistrationPageLoader() {
+    setUserNameGlobal(username);
+    setPasswordGlobal(password);
+    setPageID("registration");
+  }
   return (
     <View style={styles.container}>
       <View style={styles.input_container}>
@@ -30,12 +40,12 @@ const Login = (setUserID) => {
         <Button
           title="Login"
           style={styles.button}
-          onPress={() => LoginCheck(username, password, setUserID)}
+          onPress={() => LoginCheck(username, password, {setUserID, setPageID})}
         ></Button>
         <Button
           title="Register"
           style={styles.buton}
-          onPress={(e) => alert("Register")}
+          onPress={(e) => RegistrationPageLoader()}
         ></Button>
       </View>
     </View>

@@ -17,9 +17,6 @@ export const validateUsername = (username) => {
         return "Username cannot be more than 20 characters"
     }
     //check if the username contains any special characters
-    if (username.match(/^[a-zA-Z0-9]+$/)) {
-        return "Username cannot contain special characters"
-    }
     //return null if the username is valid
     return null
 }
@@ -38,9 +35,23 @@ export const validatePassword = (password) => {
         return "Password cannot be more than 20 characters"
     }
     //check if the password contains any special characters
-    if (password.match(/^[a-zA-Z0-9]+$/)) {
-        return "Password cannot contain special characters"
-    }
     //return null if the password is valid
+    return null
+}
+export const validateEmail = (email) => {
+    //check if the email is empty
+    if (email.length === 0) {
+        return "Email cannot be empty"
+    }
+    //check if the email is less than 5 characters
+    if (email.length < 5) {
+        return "Email must be at least 5 characters"
+    }
+    //check if the email is more than 20 characters
+    if (email.length > 20) {
+        return "Email cannot be more than 20 characters"
+    }
+    //check if the email contains any special characters
+    //return null if the email is valid
     return null
 }

@@ -36,6 +36,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 30,
   },
+  registration_button_container: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 30,
+  },
   button: {
     backgroundColor: colors.primary,
     color: "white",
