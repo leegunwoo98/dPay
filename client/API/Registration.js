@@ -1,3 +1,3 @@
 
-export const Registration = (username, password, email, deviceID) => {
+export const Registration = async (username, password, email, deviceID) => {
 }
