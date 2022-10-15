@@ -1,5 +1,5 @@
 import sampleTransactions from '../SampleTransaction.js'
-export const getTransactions= async(TransactionIDs) => {
+const getTransactions= async(TransactionIDs) => {
     // transactionIDs are an array of transaction IDs
     // append userID and username
     return sampleTransactions
@@ -10,3 +10,4 @@ export const getTransactions= async(TransactionIDs) => {
         return sampleTransactions;
     }
 }
+export {getTransactions}

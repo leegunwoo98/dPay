@@ -8,6 +8,18 @@ export async function Login(username, password) {
   } else {
     return null;
   }
+  // var url="localhost:3000"
+  // var response = await fetch(url+"/signup", {
+  //   method: "POST",
+  //   headers: {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     username: username,
+  //     password: password,
+  //   }),
+  // });
 }
 
 //create an API call to login

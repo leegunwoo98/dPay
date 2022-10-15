@@ -1,3 +1,4 @@
 
-export const Registration = async (username, password, email, deviceID) => {
+const Registration = async (username, password, email, deviceID) => {
 }
+export default {Registration}

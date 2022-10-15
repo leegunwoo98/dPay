@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     marginRight: 0,
     width: "100%",
   },
-  body:{
+  body: {
     display: "flex",
     flexDirection: "column",
     height: "100%",
@@ -79,15 +79,18 @@ const styles = StyleSheet.create({
     borderBottomColor: "lightgrey",
     borderLeftColor: "transparent",
     borderRightColor: "transparent",
-    minHeight: 40,
-    maxHeight: "50%",
+    height: 100,
+    backgroundColor:
+      "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 88%, rgba(255,255,255,1) 100%)",
+
+    
   },
   empty: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    height: 40,
+    height: 100,
     width: "100%",
     color: "grey",
     text: {

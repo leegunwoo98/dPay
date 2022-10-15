@@ -24,3 +24,4 @@ const RegistrationCheck = (username, password, email, { setPageID, setUserNameGl
         setPageID("login");
     }
 }
+export default RegistrationCheck

@@ -13,9 +13,6 @@ export default function App() {
   const [pageID, setPageID] = useState("login");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  useEffect(() =>{
-    console.log(transactions)
-  },[transactions])
 
   switch (pageID) {
     case "login":
@@ -33,7 +30,7 @@ export default function App() {
     case "home":
       return <Home user={user} setUser={setUser} setPageID={setPageID} transactions={transactions} setTransactions={setTransactions}/>
     default:
-      return <Login setUSerID={setUserID} setPageID={setPageID} />;
+      return <Login setUser={setUser} setPageID={setPageID} />;
   }
 }
 

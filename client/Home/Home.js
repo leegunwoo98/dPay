@@ -1,10 +1,10 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { StyleSheet, Text, View, TextInput, Button,ScrollView } from "react-native";
 import styles from "./HomeStyleSheet.js";
 import Svg, { Path, Use, Image } from "react-native-svg";
 import SmallTransactions from "../Transactions/Transactions.js";
 import { getGeoLocation } from "../Location.js";
-
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Home({
   user,
@@ -30,33 +30,34 @@ export default function Home({
           <View style={styles.settings_container}>
             <Button
               title="Settings"
-              style={styles.settings}
+              style={styles.seattings}
               onPress={() => setPageID("settings")}
             ></Button>
           </View>
         </View>
         <View style={styles.body}>
-            <View style={styles.balance_container}>
-                <Text style={styles.balance}>${user.balance.toFixed(2)}</Text>
-            </View>
-            <View style={styles.transaction_container1}>
-                <Text style={styles.transaction_prompt}>Transactions</Text>
-            <ScrollView style={styles.transaction_container2}>
+          <View style={styles.balance_container}>
+            <Text style={styles.balance}>${user.balance.toFixed(2)}</Text>
+          </View>
+          <View style={styles.transaction_container1}>
+            <Text style={styles.transaction_prompt}>Transactions</Text>
+
+              <ScrollView style={styles.transaction_container2}>
                 {transactions.length == 0 ? (
-                <View style={styles.empty}>
+                  <View style={styles.empty}>
                     <Text style={styles.empty.text}>empty</Text>
-                </View>
+                  </View>
                 ) : (
-                transactions.map((transaction) => (
+                  transactions.map((transaction) => (
                     <SmallTransactions
-                    key={transaction.id}
-                    transaction={transaction}
-                    setPageID={setPageID}
+                      key={transaction.id}
+                      transaction={transaction}
+                      setPageID={setPageID}
                     ></SmallTransactions>
-                ))
+                  ))
                 )}
-            </ScrollView>
-            </View>
+              </ScrollView>
+          </View>
         </View>
       </View>
     );
