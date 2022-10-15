@@ -1,21 +1,25 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Login from "./Login/Login.js";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Registration from "./Registration/Registration.js";
 import Home from "./Home/Home.js";
 
 
 export default function App() {
   //create a state to store user id
-  const [user, setUser] = React.useState(null);
-  const [transactions,setTransactions] = React.useState([]);
-  const [pageID, setPageID] = React.useState("login");
-  const [username, setUserName] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [user, setUser] = useState(null);
+  const [transactions,setTransactions] = useState([]);
+  const [pageID, setPageID] = useState("login");
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  useEffect(() =>{
+    console.log(transactions)
+  },[transactions])
+
   switch (pageID) {
     case "login":
-      return <Login setUser={setUser} setPageID={setPageID} setUserNameGlobal={setUserName} setPasswordGlobal={setPassword}/>;
+      return <Login setUser={setUser} setPageID={setPageID} setUserNameGlobal={setUserName} setPasswordGlobal={setPassword} setTransactions={setTransactions}/>;
     case "registration":
       return (
         <Registration
@@ -27,7 +31,7 @@ export default function App() {
         />
       );
     case "home":
-      return <Home user={user} setUser={setUser} setPageID={setPageID} transactions={transactions} setTransaction={setTransactions}>Home</Home>;
+      return <Home user={user} setUser={setUser} setPageID={setPageID} transactions={transactions} setTransactions={setTransactions}/>
     default:
       return <Login setUSerID={setUserID} setPageID={setPageID} />;
   }

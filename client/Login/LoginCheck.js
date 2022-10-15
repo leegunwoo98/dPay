@@ -2,10 +2,9 @@
 import {validateUsername, validatePassword} from "./Validation.js"
 import {Login} from "../API/Login.js"
 import AsyncStorage from "@react-native-async-storage/async-storage";
-const LoginCheck = (username,password, {setUser,setPageID}) =>{
+import {getTransactions} from "../API/Transaction.js"
+const LoginCheck = (username,password, {setUser,setPageID, setTransactions}) =>{
 
-    console.log(username);
-    console.log(password)
     var usernamePrompt= validateUsername(username)
     var passwordPrompt = validatePassword(password)
     var loginSuccessful=false;
@@ -28,6 +27,10 @@ const LoginCheck = (username,password, {setUser,setPageID}) =>{
               } catch (error) {
                 alert(error);
               }
+              const transaction=getTransactions(user.transactions_id)
+              transaction.then((transactionValue) =>{
+                setTransactions(transactionValue)
+              })
               alert("Login Successful");
               setUser(user);
               setPageID("home");

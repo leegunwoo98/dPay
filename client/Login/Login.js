@@ -8,6 +8,7 @@ const Login = ({
   setPageID,
   setUserNameGlobal,
   setPasswordGlobal,
+  setTransactions,
 }) => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -41,7 +42,13 @@ const Login = ({
         <Button
           title="Login"
           style={styles.button}
-          onPress={() => LoginCheck(username, password, {setUser, setPageID})}
+          onPress={() =>
+            LoginCheck(username, password, {
+              setUser,
+              setPageID,
+              setTransactions,
+            })
+          }
         ></Button>
         <Button
           title="Register"

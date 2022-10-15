@@ -1,16 +1,17 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button,ScrollView } from "react-native";
 import styles from "./HomeStyleSheet.js";
 import Svg, { Path, Use, Image } from "react-native-svg";
-import smallTransactions from "../Transactions/Transactions.js";
+import SmallTransactions from "../Transactions/Transactions.js";
 import { getGeoLocation } from "../Location.js";
+
 
 export default function Home({
   user,
-  setUserID,
+  setUser,
   setPageID,
   transactions,
-  setTransaction,
+  setTransactions,
 }) {
   const location = getGeoLocation();
 
@@ -40,20 +41,21 @@ export default function Home({
             </View>
             <View style={styles.transaction_container1}>
                 <Text style={styles.transaction_prompt}>Transactions</Text>
-            <View style={styles.transaction_container2}>
+            <ScrollView style={styles.transaction_container2}>
                 {transactions.length == 0 ? (
                 <View style={styles.empty}>
                     <Text style={styles.empty.text}>empty</Text>
                 </View>
                 ) : (
                 transactions.map((transaction) => (
-                    <smallTransactions
+                    <SmallTransactions
                     key={transaction.id}
                     transaction={transaction}
-                    ></smallTransactions>
+                    setPageID={setPageID}
+                    ></SmallTransactions>
                 ))
                 )}
-            </View>
+            </ScrollView>
             </View>
         </View>
       </View>
