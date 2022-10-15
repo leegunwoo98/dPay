@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import styles from "./HomeStyleSheet.js";
 import {getUser} from '../API/User.js'
+import S
 
 export default function Home({ userID, username,password,setUserID, setPageID }) {
     const [user,setUser]=React.useState(getUser(userID,username,password));
@@ -9,12 +10,8 @@ export default function Home({ userID, username,password,setUserID, setPageID })
     return (
         <View style={styles.container}>
             <View style = {styles.top}>
-                <View style={styles.logOut_container}>
-                    <Button
-                        title="Log Out"
-                        style={styles.logOut}
-                        onPress={() => setPageID("login")}
-                    ></Button>
+                <View style={styles.notification_container}>
+                    <Button title="Notification" style={styles.notification_button}></Button>
                 </View>
                 <View style={styles.userID_container}>
                     <Text style={styles.userID}>User ID: {userID}</Text>

@@ -6,11 +6,6 @@ export const getUser=(userID,username,password)=>{
         return null;
     }
     else{
-        return {
-            username: username,
-            password: password,
-            userID: userID,
-            balance: 42.54
-        }
+        return sampleUser;
     }
 }      
