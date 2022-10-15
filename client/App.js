@@ -9,6 +9,7 @@ import Home from "./Home/Home.js";
 export default function App() {
   //create a state to store user id
   const [user, setUser] = React.useState(null);
+  const [transactions,setTransactions] = React.useState([]);
   const [pageID, setPageID] = React.useState("login");
   const [username, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -26,7 +27,7 @@ export default function App() {
         />
       );
     case "home":
-      return <Home user={user} setUser={setUser} setPageID={setPageID}>Home</Home>;
+      return <Home user={user} setUser={setUser} setPageID={setPageID} transactions={transactions} setTransaction={setTransactions}>Home</Home>;
     default:
       return <Login setUSerID={setUserID} setPageID={setPageID} />;
   }

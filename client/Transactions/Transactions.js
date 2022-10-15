@@ -4,9 +4,9 @@ import styles from "./StyleSheet.js";
 
 const smallTransaction = (Transactions) => {
   return (
-    <View style={styles.smallTransaction}>
-      <Text style={styles.smallTransactionText}>{Transactions.name}</Text>
-      <Text style={styles.smallTransactionText}>{Transactions.amount}</Text>
+    <View style={styles.small.Transaction}>
+      <Text style={styles.small.TransactionText}>{Transactions.amount}</Text>
+      
     </View>
   );
 };

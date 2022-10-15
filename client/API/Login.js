@@ -11,3 +11,21 @@ export async function Login(username,password){
         return null;
     }
 }
+
+//create an API call to login
+// export const Login = (username, password) => {
+//     return fetch("http://localhost:3000/login", {
+//         method: "POST",
+//         headers: {
+//             Accept: "application/json",
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//             username: username,
+//             password: password,
+//         }),
+//     })
+//         .then((response) => response.json())
+//         .then((json) => {
+//             return json;
+//         })

@@ -19,23 +19,25 @@ const LoginCheck = (username,password, {setUser,setPageID}) =>{
     }
     else {
         //check database for username and password
-        var user = Login(username,password)
-        if(user!=null){
-            try{
-                AsyncStorage.setItem("userName",username)
-                AsyncStorage.setItem("password",password)
+        const user = Login(username,password)
+        user.then((user)=> {
+            if (user != null) {
+              try {
+                AsyncStorage.setItem("userName", username);
+                AsyncStorage.setItem("password", password);
+              } catch (error) {
+                alert(error);
+              }
+              alert("Login Successful");
+              setUser(user);
+              setPageID("home");
+            } else {
+              //store username and password in local storageKey
+              alert("Login Unsuccessful");
             }
-            catch(error){
-                alert(error)
-            }
-            alert("Login Successful")
-            setUser(user)
-            setPageID("home")
-        }
-        else{
-            //store username and password in local storageKey
-            alert("Login Unsuccessful")
-        }
+        })
+        
+        
         
     }
 }

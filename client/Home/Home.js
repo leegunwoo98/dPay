@@ -1,49 +1,64 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import styles from "./HomeStyleSheet.js";
-import Svg, { Path, Use, Image} from "react-native-svg";
-import Transactions from '../Transactions/Transactions.js'
-import {getGeoLocation} from '../Location.js'
+import Svg, { Path, Use, Image } from "react-native-svg";
+import smallTransactions from "../Transactions/Transactions.js";
+import { getGeoLocation } from "../Location.js";
 
-export default function Home({ user, setUserID, setPageID }) {
-    
-    const location = getGeoLocation();
-    if(user!=null){
-        return (
-            <View style={styles.container}>
-                <View style = {styles.top}>
-                    <View style={styles.notification_container}>
-                        <Button title="Notification" style={styles.notification_button}>
-                            Notification
-                        </Button>
-                    </View>
-                    <View style={styles.username_container}>
-                        <Text style={styles.username}>{user.username}</Text>
-                    </View>
-                    <View style={styles.settings_container}>
-                        <Button
-                            title="Settings"
-                            style={styles.settings}
-                            onPress={() => setPageID("settings")}
-                        ></Button>
-                    </View>
-                </View>
-                <View style={styles.balance_container}>
-                    <Text style={styles.balance}>${user.balance}</Text>
-                </View>
-                <View style={styles.transaction_container}>
-                    {user.Transactions.map((transaction) => (
-                        <Transactions
-                            key={transaction.id}
-                            transaction={transaction}
-                        ></Transactions>
-                    ))}
-                </View>
-                
+export default function Home({
+  user,
+  setUserID,
+  setPageID,
+  transactions,
+  setTransaction,
+}) {
+  const location = getGeoLocation();
+
+  if (user != null) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.top}>
+          <View style={styles.notification_container}>
+            <Button title="Notification" style={styles.notification_button}>
+              Notification
+            </Button>
+          </View>
+          <View style={styles.username_container}>
+            <Text style={styles.username}>{user.username}</Text>
+          </View>
+          <View style={styles.settings_container}>
+            <Button
+              title="Settings"
+              style={styles.settings}
+              onPress={() => setPageID("settings")}
+            ></Button>
+          </View>
+        </View>
+        <View style={styles.body}>
+            <View style={styles.balance_container}>
+                <Text style={styles.balance}>${user.balance.toFixed(2)}</Text>
             </View>
-        );
-    }
-    else{
-        setPageID("login");
-    }
+            <View style={styles.transaction_container1}>
+                <Text style={styles.transaction_prompt}>Transactions</Text>
+            <View style={styles.transaction_container2}>
+                {transactions.length == 0 ? (
+                <View style={styles.empty}>
+                    <Text style={styles.empty.text}>empty</Text>
+                </View>
+                ) : (
+                transactions.map((transaction) => (
+                    <smallTransactions
+                    key={transaction.id}
+                    transaction={transaction}
+                    ></smallTransactions>
+                ))
+                )}
+            </View>
+            </View>
+        </View>
+      </View>
+    );
+  } else {
+    setPageID("login");
+  }
 }
