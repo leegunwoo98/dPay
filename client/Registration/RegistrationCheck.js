@@ -1,11 +1,9 @@
 //create a function to check username and password
 import { validateUsername, validatePassword, validateEmail } from "../Login/Validation.js";
+import { Registration } from "../API/Registration.js";
 const RegistrationCheck = (username, password, email, { setPageID, setUserNameGlobal, setPasswordGlobal })  => {
     setUserNameGlobal("");
     setPasswordGlobal("");
-    console.log(username);
-    console.log(password);
-    console.log(email);
     var usernamePrompt = validateUsername(username);
     var passwordPrompt = validatePassword(password);
     var emailPrompt = validateEmail(email);
@@ -20,6 +18,8 @@ const RegistrationCheck = (username, password, email, { setPageID, setUserNameGl
     }
     else {
         //register in database
+        var deviceID=null
+        var user = Registration(username, password, email, deviceID);
         alert("Registration Successful");
         setPageID("login");
     }
