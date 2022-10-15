@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import styles from "./HomeStyleSheet.js";
+import {getUser} from '../API/User.js'
 
-export default function Home({ user, setPageID }) {
-    const [user,setUser]=React.useState(null);
+export default function Home({ userID, username,password,setUserID, setPageID }) {
+    const [user,setUser]=React.useState(getUser(userID,username,password));
     const [transaction, setTransaction] = React.useState(null);
     return (
         <View style={styles.container}>

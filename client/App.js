@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Login from "./Login/Login.js";
 import React from "react";
 import Registration from "./Registration/Registration.js";
+import Home from "./Home/Home.js";
 
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
         />
       );
     case "home":
-      return <Text>Home</Text>;
+      return <Home userID={userID} username={username} password={password} setUserID={setUserID} setPageID={setPageID}>Home</Home>;
     default:
       return <Login setUSerID={setUserID} setPageID={setPageID} />;
   }

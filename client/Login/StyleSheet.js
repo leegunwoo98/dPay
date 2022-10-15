@@ -17,11 +17,9 @@ const styles = StyleSheet.create({
   },
   input: {
     //set width to 100%
-    width: "100%",
     height: 40,
     margin: 12,
     borderWidth: 1,
-    width: "100%",
     backgroundColor: "#b3b3b3",
     color: "#000000",
     placeholderTextColor: "#000000",

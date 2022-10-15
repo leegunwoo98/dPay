@@ -5,7 +5,7 @@ import {RegistrationCheck} from './RegistrationCheck.js'
 
 export default function Registration({
     userNameGlobal, passwordGlobal,setUserNameGlobal, setPasswordGlobal,setPageID}){
-    console.log(userNameGlobal)
+    
     const [username, setUsername] = React.useState(userNameGlobal);
     const [password, setPassword] = React.useState(passwordGlobal);
     const [email, setEmail] = React.useState("");
