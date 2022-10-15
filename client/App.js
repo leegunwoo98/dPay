@@ -8,13 +8,13 @@ import Home from "./Home/Home.js";
 
 export default function App() {
   //create a state to store user id
-  const [userID, setUserID] = React.useState(null);
+  const [user, setUserID] = React.useState(null);
   const [pageID, setPageID] = React.useState("login");
   const [username, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");
   switch (pageID) {
     case "login":
-      return <Login setUserID={setUserID} setPageID={setPageID} setUserNameGlobal={setUserName} setPasswordGlobal={setPassword}/>;
+      return <Login setUser={setUser} setPageID={setPageID} setUserNameGlobal={setUserName} setPasswordGlobal={setPassword}/>;
     case "registration":
       return (
         <Registration

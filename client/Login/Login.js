@@ -4,7 +4,7 @@ import styles from "./StyleSheet";
 import { LoginCheck } from "./LoginCheck.js";
 
 const Login = ({
-  setUserID,
+  setUser,
   setPageID,
   setUserNameGlobal,
   setPasswordGlobal,
@@ -41,7 +41,7 @@ const Login = ({
         <Button
           title="Login"
           style={styles.button}
-          onPress={() => LoginCheck(username, password, {setUserID, setPageID})}
+          onPress={() => LoginCheck(username, password, {setUser, setPageID})}
         ></Button>
         <Button
           title="Register"

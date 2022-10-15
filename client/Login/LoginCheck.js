@@ -1,7 +1,6 @@
 //create a function to check username and password
 import {validateUsername, validatePassword} from "./Validation.js"
-import {Login_tf} from "./Login_tf.js"
-import { AsyncStorage} from "react-native"
+import {Login} from "../API/Login.js"
 const LoginCheck = (username,password, {setUserID,setPageID}) =>{
 
     console.log(username);
@@ -19,7 +18,7 @@ const LoginCheck = (username,password, {setUserID,setPageID}) =>{
     }
     else {
         //check database for username and password
-        var Logged_tf = Login_tf(username,password)
+        var user = Login(username,password)
         Logged_tf=true
         if(Logged_tf){
             try{
