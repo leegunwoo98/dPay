@@ -4,6 +4,7 @@ import Login from "./Login/Login.js";
 import React, {useState, useEffect} from "react";
 import Registration from "./Registration/Registration.js";
 import Home from "./Home/Home.js";
+import Settings from "./Settings/Settings.js";
 
 
 export default function App() {

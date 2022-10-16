@@ -1,7 +1,7 @@
 const sampleUser = {
   username: "test",
   password: "test",
-  userID: 19,
+  userID: "19",
   balance: 42.54,
 }
 

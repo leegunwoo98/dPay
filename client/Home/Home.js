@@ -5,6 +5,7 @@ import Svg, { Path, Use, Image } from "react-native-svg";
 import SmallTransactions from "../Transactions/Transactions.js";
 import { getGeoLocation } from "../Location.js";
 import { LinearGradient } from "expo-linear-gradient";
+import {getNearbyShops } from "../API/Shops.js";
 
 export default function Home({
   user,
@@ -13,7 +14,22 @@ export default function Home({
   transactions,
   setTransactions,
 }) {
-  const location = getGeoLocation();
+  const [shops, setShops] = useState([]);
+  const [location,setLocation] = useState(null);
+  if(location==null){
+      const location_promise = getGeoLocation();
+    location_promise.then((location) => {
+      setLocation(location);
+      getNearbyShops(location.coords.latitude,location.coords.longitude).then((shops) => 
+      {
+        console.log(shops)
+        setShops(shops);
+      });
+    })
+  }
+
+
+ 
 
   if (user != null) {
     return (
@@ -30,7 +46,7 @@ export default function Home({
           <View style={styles.settings_container}>
             <Button
               title="Settings"
-              style={styles.seattings}
+              style={styles.settings}
               onPress={() => setPageID("settings")}
             ></Button>
           </View>
@@ -42,21 +58,42 @@ export default function Home({
           <View style={styles.transaction_container1}>
             <Text style={styles.transaction_prompt}>Transactions</Text>
 
-              <ScrollView style={styles.transaction_container2}>
-                {transactions.length == 0 ? (
-                  <View style={styles.empty}>
-                    <Text style={styles.empty.text}>empty</Text>
-                  </View>
-                ) : (
-                  transactions.map((transaction) => (
-                    <SmallTransactions
-                      key={transaction.id}
-                      transaction={transaction}
-                      setPageID={setPageID}
-                    ></SmallTransactions>
-                  ))
-                )}
-              </ScrollView>
+            <ScrollView style={styles.transaction_container2}>
+              {transactions.length == 0 ? (
+                <View style={styles.empty}>
+                  <Text style={styles.empty.text}>empty</Text>
+                </View>
+              ) : (
+                transactions.map((transaction) => (
+                  <SmallTransactions
+                    key={transaction.id}
+                    transaction={transaction}
+                    setPageID={setPageID}
+                  ></SmallTransactions>
+                ))
+              )}
+            </ScrollView>
+          </View>
+          <View style={styles.transaction_container1}>
+            <Text style={styles.transaction_prompt}>Transactions</Text>
+
+            <ScrollView style={styles.transaction_container2}>
+              {transactions.length == 0 ? (
+                <View style={styles.empty}>
+                  <Text style={styles.empty.text}>empty</Text>
+                </View>
+              ) : (
+                transactions.map((transaction) => (
+                  <SmallTransactions
+                    key={transaction.id}
+                    transaction={transaction}
+                    setPageID={setPageID}
+                  ></SmallTransactions>
+                ))
+              )}
+            </ScrollView>
+          </View>
+          <View style={styles.shops.container}>
           </View>
         </View>
       </View>

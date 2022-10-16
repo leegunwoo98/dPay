@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "lightgrey",
     borderLeftColor: "transparent",
     borderRightColor: "transparent",
-    height: 100,
+    height: 200,
     backgroundColor:
       "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 88%, rgba(255,255,255,1) 100%)",
 
